@@ -3,7 +3,7 @@ import { Typography, createStyles, Theme, Container, Slider, Grid, CardContent, 
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import CustomTable from './CustomTable';
+import CustomTable from '../shared-components/CustomTable';
 
 
 const useStyles = makeStyles((theme: Theme) =>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
+import Login from './pages/components/Login';
+import Dashboard from './pages/components/Dashboard';
 
 // Style
 // import './App.css';

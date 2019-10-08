@@ -1,8 +1,8 @@
 import * as React from 'react'
-import store, { RootState } from '../store'
+import store, { RootState } from '../../store'
 import { connect } from 'react-redux'
-import { login } from '../store/session/actions'
-import { AccessToken } from '../store/session/reducer'
+import { login } from '../../store/session/actions'
+import { AccessToken } from '../../store/session/reducer'
 import { ThunkDispatch } from 'redux-thunk'
 import Button from '@material-ui/core/Button';
 import { TextField, Container, Typography, Link, CssBaseline,
@@ -154,7 +154,7 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>, ownProps: OwnP
       } else {
         localStorage.setItem('user', JSON.stringify(store.getState().session.sessionObject.user))
         localStorage.setItem('accessToken', JSON.stringify(store.getState().session.sessionObject.accessToken))
-        window.location.assign("/")
+        window.location.assign("/content")
       }
     }
   }

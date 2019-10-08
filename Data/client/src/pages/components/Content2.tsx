@@ -1,5 +1,5 @@
 import * as React from 'react';
-import CustomGrid from './CustomGrid';
+import CustomGrid from '../shared-components/CustomGrid';
 
 export default function Content2() {
   return (
