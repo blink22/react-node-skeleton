@@ -15,9 +15,17 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsNoneOutlinedIcon from '@material-ui/icons/NotificationsNoneOutlined';
-import { mainListItems, secondaryListItems } from './ListItems';
+import { secondaryListItems } from './ListItems';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PeopleIcon from '@material-ui/icons/People';
+import BarChartIcon from '@material-ui/icons/BarChart';
+import LayersIcon from '@material-ui/icons/Layers';
 import Content from './Content';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import Content2 from './Content2';
+import { BrowserRouter as Router, Route, Link as RLink } from 'react-router-dom';
+import Content3 from './Content3';
 
 function Copyright() {
   return (
@@ -172,30 +180,71 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
       {renderMenu}
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Content />
-        </Container>
-        <Copyright />
-      </main>
+      <Router>
+        <Drawer
+          variant="permanent"
+          classes={{
+            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+          }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+            <List>
+              <RLink to="/content" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <DashboardIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Dashboard" />
+                </ListItem>
+              </RLink>
+              <RLink to="/content2" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <ShoppingCartIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Orders" />
+                </ListItem>
+              </RLink>
+              <RLink to="/content3" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <PeopleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Customers" />
+                </ListItem>
+              </RLink>
+              <ListItem button>
+                <ListItemIcon>
+                  <BarChartIcon />
+                </ListItemIcon>
+                <ListItemText primary="Reports" />
+              </ListItem>
+              <ListItem button>
+                <ListItemIcon>
+                  <LayersIcon />
+                </ListItemIcon>
+                <ListItemText primary="Integrations" />
+              </ListItem>
+            </List>
+          <Divider />
+          <List>{secondaryListItems}</List>
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container} id="content">
+            <Route exact path="/content" component={Content} />
+            <Route exact path="/content2" component={Content2} />
+            <Route exact path="/content3" component={Content3} />
+          </Container>
+          <Copyright />
+        </main>
+      </Router>
     </div>
   );
 }
