@@ -154,7 +154,7 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>, ownProps: OwnP
       } else {
         localStorage.setItem('user', JSON.stringify(store.getState().session.sessionObject.user))
         localStorage.setItem('accessToken', JSON.stringify(store.getState().session.sessionObject.accessToken))
-        window.location.assign("/content")
+        window.location.assign("/")
       }
     }
   }

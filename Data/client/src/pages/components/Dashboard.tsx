@@ -196,6 +196,7 @@ export default function Dashboard() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container} id="content">
+            <Route exact path="/" component={Content} />
             <Route exact path="/content" component={Content} />
             <Route exact path="/content2" component={Content2} />
             <Route exact path="/content3" component={Content3} />
