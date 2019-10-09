@@ -19,7 +19,7 @@ import { secondaryListItems, mainListItems } from '../shared-components/ListItem
 import Content from './Content';
 import { Menu, MenuItem } from '@material-ui/core';
 import Content2 from './Content2';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Content3 from './Content3';
 
 function Copyright() {
@@ -175,35 +175,33 @@ export default function Dashboard() {
         </Toolbar>
       </AppBar>
       {renderMenu}
-      <Router>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-          }}
-          open={open}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-            <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container} id="content">
-            <Route exact path="/" component={Content} />
-            <Route exact path="/content" component={Content} />
-            <Route exact path="/content2" component={Content2} />
-            <Route exact path="/content3" component={Content3} />
-          </Container>
-          <Copyright />
-        </main>
-      </Router>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+        }}
+        open={open}
+      >
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+          <List>{mainListItems}</List>
+        <Divider />
+        <List>{secondaryListItems}</List>
+      </Drawer>
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container} id="content">
+          <Route exact path="/" component={Content} />
+          <Route exact path="/content" component={Content} />
+          <Route exact path="/content2" component={Content2} />
+          <Route exact path="/content3" component={Content3} />
+        </Container>
+        <Copyright />
+      </main>
     </div>
   );
 }
